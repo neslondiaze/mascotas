@@ -37,6 +37,6 @@ app.use((req, res, next) => {
 })
 
 
-server.listen(app.get('port', () => {
+server.listen(app.get('port'), () => {
     console.log(`servidor en el puerto ${app.get('port')}`);
-})
+});
