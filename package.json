@@ -1,0 +1,27 @@
+{
+  "name": "Mascotas",
+  "version": "1.0.0",
+  "description": "Node.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neslondiaze/mascotas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/neslondiaze/mascotas/issues"
+  },
+  "homepage": "https://github.com/neslondiaze/mascotas#readme"
+}
