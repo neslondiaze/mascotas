@@ -1,8 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const http = require('http');
+
 const app = express();
 
-
+// Parser application/X-www-form-urLencoded
+app.use(bodyParser.urlencoded({ extended: false}));
+// Parse application/json
+app.use(bodyParser.json());
 
 const server = http.createServer(app);
 
