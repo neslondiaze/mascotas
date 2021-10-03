@@ -1,35 +1,3 @@
-<%- include("template/cabecera", {tituloWeb: 'Detalle de mascota'}) %>
-<h1>Detalle Mascota</h1>
-
-<% if (error) { %>
-<p>
-    <%= mensaje %>
-</p>
-<a href="/mascotas" class="btn btn-danger btn-block">Volver a Mascotas</a>
-<% } %>
-<% if (!error) { %>
-
-<form id="formularioEditar" data-id="<%= mascota.id %>">
-    <input type="text" class="form-control my-2" id="nombreInput" name="nombre" value="<%= mascota.nombre %>">
-    <input type="text" class="form-control my-2" id="descripcionInput" name="descripcion"
-        value="<%= mascota.descripcion %>">
-    <button class="btn btn-warning btn-block" type="submit">
-        editar
-    </button>
-</form>
-
-<hr>
-
-<button class="btn btn-danger btn-sm mt-5" id="btnEliminar" data-id="<%= mascota.id %>">
-    Eliminar
-</button>
-<% } %>
-
-<hr>
-<%- include("template/footer") %>
-
-
-<script>
     const btnEliminar = document.querySelector('#btnEliminar')
 
     btnEliminar.addEventListener('click', async () => {
@@ -116,4 +84,3 @@
         }
 
     })
-</script>

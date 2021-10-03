@@ -4,22 +4,22 @@ const router = express.Router();
 const Mascota = require('../models/mascota')
 
 router.get('/', async (req, res) => {
-    
-    try {        
+
+    try {
         const arrayMascotasDB = await Mascota.find()
         res.render("mascotas", {
             arrayMascotas: arrayMascotasDB
         })
     } catch (error) {
         console.log(error)
-    }  
+    }
 })
 
 router.get('/crear', (req, res) => {
     res.render('crear')
 })
 
-router.post('/', async(req, res) =>{
+router.post('/', async (req, res) => {
     const body = req.body
     try {
         await Mascota.create(body)
@@ -29,35 +29,39 @@ router.post('/', async(req, res) =>{
     }
 })
 
-router.get('/:id', async(req, res) => {
+router.get('/:id', async (req, res) => {
     const id = req.params.id
 
     try {
-        const mascotaDB = await Mascota.findOne({_id: id})
+        const mascotaDB = await Mascota.findOne({
+            _id: id
+        })
         res.render('detalle', {
             mascota: mascotaDB,
-            error:false
+            error: false
         })
     } catch (error) {
         res.render('detalle', {
-            error:true,
+            error: true,
             mensaje: 'No se encuentra el id seleccionado'
         })
     }
 })
 
-router.delete('/:id', async(req, res) => {
+router.delete('/:id', async (req, res) => {
     const id = req.params.id
 
     try {
-        const mascotaDB = await Mascota.findByIdAndRemove({_id: id})
+        const mascotaDB = await Mascota.findByIdAndRemove({
+            _id: id
+        })
 
-        if(mascotaDB){
+        if (mascotaDB) {
             res.json({
                 estado: true,
                 mensaje: 'eliminado!.'
             })
-        }else{
+        } else {
             res.json({
                 estado: false,
                 mensaje: 'fallo al eliminar!.'
@@ -66,17 +70,19 @@ router.delete('/:id', async(req, res) => {
 
     } catch (error) {
         console.log('error', error)
-        
+
     }
 })
 
-router.put('/:id', async(req, res) =>{
+router.put('/:id', async (req, res) => {
     const id = req.params.id
     const body = req.body
 
     try {
-        const mascotaDB = await Mascota.findByIdAndUpdate(id, body,{useFindAndModify: false})
-        console.log(mascotaDB)
+        const mascotaDB = await Mascota.findByIdAndUpdate(id, body, {
+            useFindAndModify: false
+        })
+        //console.log(mascotaDB)
 
         res.json({
             estado: true,
@@ -84,7 +90,7 @@ router.put('/:id', async(req, res) =>{
         })
     } catch (error) {
         console.log(error)
-        
+
         res.json({
             estado: false,
             mensaje: "Fallido!!!."
